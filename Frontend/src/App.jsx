@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { Cart } from './Components/Cart'
 import './App.css'
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
   const nodeEnv = import.meta.env.VITE_NODE_ENV;
   return (
     <>
-    <h1>Current Working Directory is : {nodeEnv}</h1>
+    <Cart/>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

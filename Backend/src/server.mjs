@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from 'cors'
 dotenv.config();
 const app = express();
 import {router as userrouter} from './routes/users.mjs'
@@ -16,6 +17,7 @@ console.log('Node Environment:', process.env.NODE_ENV);
 console.log('Current Working Directory:', process.cwd());
 console.log('MongoDB URI:', process.env.ATLAS_URI);
 
+app.use(cors())
 
 const Uri = process.env.ATLAS_URI
 
@@ -33,8 +35,12 @@ mongoose.connection.once('open', ()=> {
 
 app.use(express.static("./public"));
 console.log('Static files served from:', 'styles');
-app.set("views", "./src/views"); 
+app.set("views", "Backend/src/views"); 
 app.set("view engine", "pug");
+
+app.get('/api/cart', (req, res) => {
+  res.json({ message: 'CORS-enabled for all origins!' });
+});
 
 app.get('/views',(req,res)=>{
   const options = {
