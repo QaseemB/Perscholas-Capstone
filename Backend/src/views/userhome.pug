@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title= title
+    style.
+      .container {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 800px; /* Adjust as needed */
+      }
+      .image-container {
+        display: flex;
+        justify-content: space-between;
+
+      }
+  body()
+    .container
+      h1(style="text-align: center")= "AUDIOPHILES WELCOME"
+      p Welcome to our premier audio engineering e-commerce platform, where cutting-edge technology meets exceptional sound quality. Discover a curated selection of the finest audio equipment, from state-of-the-art studio gear to top-tier instruments, all designed to elevate your sound.
+      p Whether you're a seasoned professional or an aspiring artist, our expertly crafted products and unparalleled customer support will help you create the perfect auditory experience.
+      p Browse through our collection and find everything you need for your home or professional studio setup.
+      p Shop with confidence and enjoy the convenience of online shopping with fast delivery and secure transactions.
+      p Visit our <a href="/studio">studio</a> and <a href="/instruments">instrument</a> pages to explore more.
+      .image-container
+        a(href="/studio")
+          img(src="/images/studioequipment.jpg", alt="studio Equipment page")
+          p click here to vist our studio eqipment page.
+        a(href="/instruments")
+          img(src="/images/instrument.jpg", alt="Instrument page")
+          p click here to vist our instrument page.
