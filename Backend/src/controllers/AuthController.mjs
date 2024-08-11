@@ -12,9 +12,9 @@ export const register = async (req,res) =>{
 
     try{
         // Check if the user exists
-        let user = await USERS.findOne({username})
+        let user = await USERS.findOne({ $or: [{ username }, { email }] })
         if(user){
-            return res.status(400).json({msg: 'User already exists'});
+            return res.status(400).json({msg: 'Username or email already exists'});
         }
         user = new USERS({username,password,name,email});
 
@@ -32,8 +32,8 @@ export const register = async (req,res) =>{
                 res.json({token});
         });
     } catch (err) {
-        console.error(err.message)
-        res.status(500).send(error,'Server Error');
+        console.error(err)
+        res.status(500).send('server error');
     }
 };
 
