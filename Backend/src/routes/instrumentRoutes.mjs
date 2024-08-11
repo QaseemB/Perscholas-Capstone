@@ -1,6 +1,5 @@
 import express from 'express';
 const router = express.Router();
-import { query, body } from "express-validator";
 import { 
   getInstrumentById,
   getInstrument,

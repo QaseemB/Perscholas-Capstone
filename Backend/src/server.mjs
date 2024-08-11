@@ -4,10 +4,11 @@ import dotenv from "dotenv";
 import cors from 'cors'
 dotenv.config();
 const app = express();
-import {router as userrouter} from './routes/users.mjs'
-import {router as instrumentrouter} from './routes/instrument.mjs'
-import {router as studioeqrouter} from './routes/studioeq.mjs'
+import {router as userRouter} from './routes/usersRoutes.mjs'
+import {router as instrumentRouter} from './routes/instrumentRoutes.mjs'
+import {router as studioeqRouter} from './routes/studioeqRoutes.mjs'
 import { router as cartRouter} from './routes/Cart.mjs';
+import {router as authRouter} from './routes/authRoutes.mjs'
 import  {USERS}  from "./models/users.mjs";
 
 
@@ -16,14 +17,14 @@ import  {USERS}  from "./models/users.mjs";
 console.log('Node Environment:', process.env.NODE_ENV);
 console.log('Current Working Directory:', process.cwd());
 console.log('MongoDB URI:', process.env.ATLAS_URI);
-
+console.log('PORT:', process.env.PORT)
 app.use(cors())
 
 const Uri = process.env.ATLAS_URI
 
 app.use(express.json());
 
-mongoose.connect(Uri);
+mongoose.connect(Uri)
 
 mongoose.connection.once('open', ()=> {
   console.log('connected to mongo')});
@@ -70,7 +71,6 @@ const logTime = (req,res,next)=>{
     next();
 }
 
-app.use(logTime)
 
 app.get("/", async(req, res) => {
   myEmitter.on('event', () => {
@@ -79,10 +79,12 @@ app.get("/", async(req, res) => {
   let userdb = await USERS.find({})
     res.send(userdb);
   });
-app.use("/api/users", userrouter);
-app.use("/api/instrument", instrumentrouter);
-app.use("/api/studio", studioeqrouter);
-app.use("/api/cart",cartRouter)
+
+app.use("/api/users",logTime, userRouter);
+app.use("/api/instrument",logTime, instrumentRouter);
+app.use("/api/studio",logTime, studioeqRouter);
+app.use("/api/cart",logTime,cartRouter)
+app.use("/api/auth",logTime,authRouter)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
