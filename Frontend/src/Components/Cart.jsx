@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Cart = () => {
     const [cart, setCart] = useState([]);
-    const [newItem, setNewItem] = useState({ productId: '', name: '', quantity: 1, price: 0 });
+    const [newItem, setNewItem] = useState({ _id: '', model: '', quantity: 1, price: 0 });
     useEffect(() => {
         fetchCart();
       }, []);
@@ -11,17 +11,32 @@ const Cart = () => {
       const fetchCart = async () => {
         const response = await axios.get('http://localhost:3000/api/cart')
         .then(res => {
-          console.log(response.data);
+          console.log(res.data);
       })
       .catch(error => {
           console.error('There was an error!', error);
       });
-        setCart(response.data);
+        // setCart(response.data);
       }
       const addItem = async () => {
-        const response = await axios.post('http://localhost:3000/api/cart', { items: [newItem] });
-        setCart([...cart, response.data]);
-        setNewItem({ productId: '', name: '', quantity: 1, price: 0 });
+        try {
+          const studioResponse = await axios.get(`http://localhost:3000/api/instrument/${newItem._id}`);
+          // const studioProduct = studioResponse.data;
+          const instrumentResponse = await axios.get(`http://localhost:3000/api/instrument/${newItem._id}`);
+          // const InstrumentProduct = instrumentResponse.data
+          const Product = studioResponse.data || instrumentResponse.data;
+          const cartResponse = await axios.post('http://localhost:3000/api/cart', { 
+            items:[ {
+            _id: Product._id,
+            model: Product.model,
+            quantity: newItem.quantity,
+            price: Product.price
+          }] });
+        setCart([...cart, cartResponse.data]);
+        setNewItem({ _id: '', model: '', quantity: 1, price: 0 });
+        }catch (error) {
+          console.error('Error adding item to cart:', error);
+        
       };
       const updateItem = async (id, updatedItem) => {
         const response = await axios.put(`http://localhost:3000/api/cart/:${id}`, { items: [updatedItem] });
@@ -38,14 +53,14 @@ const Cart = () => {
             <input
               type="text"
               placeholder="Product ID"
-              value={newItem.productId}
-              onChange={(e) => setNewItem({ ...newItem, productId: e.target.value })}
+              value={newItem._id}
+              onChange={(e) => setNewItem({ ...newItem, _id: e.target.value })}
             />
             <input
               type="text"
-              placeholder="Name"
-              value={newItem.name}
-              onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+              placeholder="Model"
+              value={newItem.model}
+              onChange={(e) => setNewItem({ ...newItem, model: e.target.value })}
             />
             <input
               type="number"
@@ -65,7 +80,7 @@ const Cart = () => {
           <ul>
             {cart.map(item => (
               <li key={item._id}>
-                {item.name} - {item.quantity} x ${item.price}
+                {item.model} - {item.quantity} x ${item.price}
                 <button onClick={() => deleteItem(item._id)}>Delete</button>
                 <button onClick={() => updateItem(item._id, { ...item, quantity: item.quantity + 1 })}>+</button>
                 <button onClick={() => updateItem(item._id, { ...item, quantity: item.quantity - 1 })}>-</button>
@@ -74,7 +89,8 @@ const Cart = () => {
           </ul>
         </div>
       );
-    };
+    }
+  }
 
 export {Cart}
     

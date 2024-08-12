@@ -1,9 +1,9 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    background-color: navy;
+    background-color: #191970;
     color: white;
-    padding: 15px;
+    padding: 10px;
     font-size: 2em;
     align-items: center;
     gap: 20px; 
