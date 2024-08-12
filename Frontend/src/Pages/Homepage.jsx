@@ -63,19 +63,18 @@ export const HomePage = () => {
       </nav>
       <h2>Shopping Items</h2>
       <ul>
-        {instruments.map(i => (
-          <li key={i._id}>
-            {i.model} - ${i.price}
-            <button>Add to Cart</button>
-          </li>
-          
-        ))}
-         {studio.map(s => (
-          <li key={s._id}>
-            {s.model} - ${s.price}
-            <button>Add to Cart</button>
-          </li>
-        ))}
+      {instruments.slice(0, 2).map(i => (
+  <li key={i._id}>
+    {i.model} - ${i.price}
+    <button>Add to Cart</button>
+  </li>
+))}
+        {studio.slice(0, 2).map(s => (
+  <li key={s._id}>
+    {s.model} - ${s.price}
+    <button>Add to Cart</button>
+  </li>
+))}
       </ul>
     </div>
   );
