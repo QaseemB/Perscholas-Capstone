@@ -11,31 +11,44 @@ export const HomePage = () => {
   
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId')
-    console.log(token)
-    console.log(userId)
-    if (token) {
-      setIsAuthenticated(true); // User is authenticated
-    }
 
+    const checkAuth = async () => {
+      try {
+        // Make a request to a protected route on your server
+        const res = await axios.get('http://localhost:3000/api/auth/check', {
+          withCredentials: true 
+        });
+        setIsAuthenticated(true);
+        setUser(res.data.user);
+        console.log(res.data.user)
+      } catch (err) {
+        setIsAuthenticated(false);
+        setUser(null);
+      }
+    };
     const fetchInstruments = async () => {
-      const response = await axios.get('http://localhost:3000/api/instruments'); // Fetch items from API
+      const response = await axios.get('http://localhost:3000/api/instrument',{
+        withCredentials: true
+      }); // Fetch items from API
       setInstruments(response.data);
     };
     const fetchStudio = async () => {
-        const response = await axios.get('http://localhost:3000/api/studio'); // Fetch items from API
+        const response = await axios.get('http://localhost:3000/api/studio',{
+          withCredentials: true
+        }); // Fetch items from API
         setStudio(response.data);
       };
-    const fetchUsername = async (id) => {
-        const res = await axios.get(`http://localhost:3000/api/users/${userId}`, {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        setUser(res.data)
-      }
+    // const fetchUsername = async (id) => {
+    //     const res = await axios.get(`http://localhost:3000/api/users/${userId}`, {
+    //         // headers: { Authorization: `Bearer ${token}` }
+    //     })
+    //     setUser(res.data)
+    //   }
+     
     fetchInstruments();
     fetchStudio();
-    fetchUsername();
+    checkAuth();
+    // fetchUsername();
     
   }, []);
 

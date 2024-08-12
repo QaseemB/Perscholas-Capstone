@@ -4,11 +4,13 @@ import dotenv from "dotenv";
 import cors from 'cors'
 dotenv.config();
 const app = express();
+import cookieParser from 'cookie-parser';
 import {router as userRouter} from './routes/usersRoutes.mjs'
 import {router as instrumentRouter} from './routes/instrumentRoutes.mjs'
 import {router as studioeqRouter} from './routes/studioeqRoutes.mjs'
 import { router as cartRouter} from './routes/Cart.mjs';
 import {router as authRouter} from './routes/authRoutes.mjs'
+import { authMiddleware } from './utilties/authMiddleware.mjs';
 import  {USERS}  from "./models/users.mjs";
 
 
@@ -18,10 +20,22 @@ console.log('Node Environment:', process.env.NODE_ENV);
 console.log('Current Working Directory:', process.cwd());
 console.log('MongoDB URI:', process.env.ATLAS_URI);
 console.log('PORT:', process.env.PORT)
-app.use(cors())
+
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}))
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 const Uri = process.env.ATLAS_URI
 
+app.use(cookieParser());
 app.use(express.json());
 
 mongoose.connect(Uri)
@@ -80,11 +94,14 @@ app.get("/", async(req, res) => {
     res.send(userdb);
   });
 
-app.use("/api/users",logTime, userRouter);
+app.use("/api/users",logTime,authMiddleware, userRouter,(req, res) => {
+  res.json({ msg: 'This is a protected route' });
+});
 app.use("/api/instrument",logTime, instrumentRouter);
 app.use("/api/studio",logTime, studioeqRouter);
 app.use("/api/cart",logTime,cartRouter)
 app.use("/api/auth",logTime,authRouter)
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

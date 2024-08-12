@@ -20,25 +20,22 @@ const Login = ({ setLoggedInUser }) => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
-            const res = 
-                await axios.post('http://localhost:3000/api/auth/login', 
+            const res = await axios.post('http://localhost:3000/api/auth/login', 
             {
                 username,
                 password
+            }, {
+                withCredentials: true // Correct placement of withCredentials
             });
-            localStorage.setItem('token', res.data.token);
-            localStorage.setItem('userId', res.data.userId)
+            localStorage.setItem('userId', res.data.userId);
             setLoggedInUser(username);
-            navigate('/home')
-            
-            // Set success message
-            setMessage('Logged in successfully');
+            navigate('/home');
         } catch (err) {
             console.error(err.response.data || err);
-            // Set error message
             alert('Failed to login - wrong credentials');         
         }
     };
+    
 
     return (
         <div className="auth-form">

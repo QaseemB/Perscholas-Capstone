@@ -20,6 +20,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const res = await axios.post('http://localhost:3000/api/auth/register', {
+                withCredentials: true,
                 username,
                 password,
                 email,

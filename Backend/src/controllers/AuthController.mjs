@@ -69,13 +69,31 @@ export const login = async (req,res)=>{
         jwt.sign(payload, process.env.jwtSecret, { expiresIn: 3600 }, 
             (err, token) => {
                 if (err) throw err;
-                res.json({ token,
-                    userId: user._id
-                } );
-                console.log(user._id)
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    secure: false,
+                    samesite: 'strict',
+                    maxAge: 3600000})
+                .json( {userId: user._id})
+                console.log(user._id,token)
             });
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
         }
     };
+
+
+    export const checkAuth = async (req, res) => {
+        try {
+          
+          if (req.user) {
+            res.json({ user: { id: req.user._id, name: req.user.name, username: req.user.username } });
+          } else {
+            res.status(401).json({ msg: 'Not authenticated' });
+          }
+        } catch (err) {
+          console.error(err.message);
+          res.status(500).send('Server Error');
+        }
+      };
