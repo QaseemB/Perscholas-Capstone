@@ -18,7 +18,7 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/auth/register', {
+            const res = await axios.post('http://localhost:3000/api/auth/register', {
                 username,
                 password,
                 email,
@@ -27,7 +27,7 @@ const Register = () => {
             setMessage('Registered successfully'); // Set success message
         } catch (err) {
             console.error(err.response.data);
-            setMessage('Failed to register, Username or email already exists'); // Set error message
+            alert('Failed to register, Username or email already exists'); // Set error message
         }
     };
 

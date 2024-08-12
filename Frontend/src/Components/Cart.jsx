@@ -16,7 +16,7 @@ const Cart = () => {
       .catch(error => {
           console.error('There was an error!', error);
       });
-        setCart(response.data);
+        // setCart(response.data);
       }
       const addItem = async () => {
         const response = await axios.post('http://localhost:3000/api/cart', { items: [newItem] });

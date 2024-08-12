@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = ({ setLoggedInUser }) => {
@@ -6,6 +7,9 @@ const Login = ({ setLoggedInUser }) => {
         username: '',
         password: ''  
     });
+
+    const navigate = useNavigate();
+
     const [message, setMessage] = useState('');
 
     const { username, password } = formData;
@@ -24,13 +28,14 @@ const Login = ({ setLoggedInUser }) => {
             });
             localStorage.setItem('token', res.data.token);
             setLoggedInUser(username);
+            navigate('/home')
             
             // Set success message
             setMessage('Logged in successfully');
         } catch (err) {
-            console.error(err.response.data);
+            console.error(err.response.data || err);
             // Set error message
-            setMessage('Failed to login - wrong credentials');         
+            alert('Failed to login - wrong credentials');         
         }
     };
 

@@ -2,27 +2,28 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Cart } from './Components/Cart'
-import {Register} from './Components/Register'
-import {Login} from './Components/Login'
+import { PageOneRendering } from './Pages/Page1'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {HomePage} from './Pages/HomePage';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
   return (
     <>
-    <Cart/>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <div>
-                    <Register />
-                    <Login />
-                </div>
+    <div className="App">
+    {/* <Cart/> */}
+    <Router>
+    <Routes>
+      <Route path="/home" element={<HomePage/>}/>
+      <Route path="/" element={<PageOneRendering/>}/>
+     </Routes>
+    </Router>
+    </div>
+    
+   
+     
+       
     </>
   )
 }
