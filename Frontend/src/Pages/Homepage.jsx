@@ -54,13 +54,8 @@ export const HomePage = () => {
 
   return (
     <div>
-      <nav>
-        <h1>My E-Commerce Store</h1>
-        <a href="/">Home</a>
-        <a href="/products">Products</a>
-        <a href="/cart">Cart</a>
-        {!isAuthenticated ? <a href="/login">Login</a> : <span>Welcome Back {user ? user.name : 'User'}</span>}
-      </nav>
+        <span>Welcome Back {user ? user.name : 'User'}</span>
+ 
       <h2>Shopping Items</h2>
       <ul>
       {instruments.slice(0, 2).map(i => (
