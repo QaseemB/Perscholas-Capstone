@@ -50,10 +50,10 @@ export const resolveIndexbyInstID = async (req,res,next)=>{
     }
   }
 
- export const getInstrument = (req,res) =>{
-  console.log(instrumentTest)
+ export const getInstrument = async (req,res) =>{
+  const instrumentsData = await Instruments.find();
   console.error(error, `Issue getting instruments`)
-    res.json(instrumentTest);
+    res.json(instrumentsData);
  }
 
  export const getInstrumentById = (req,res) =>{
