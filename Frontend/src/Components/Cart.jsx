@@ -10,13 +10,13 @@ const Cart = () => {
 
       const fetchCart = async () => {
         const response = await axios.get('http://localhost:3000/api/cart')
-        .then(response => {
+        .then(res => {
           console.log(response.data);
       })
       .catch(error => {
           console.error('There was an error!', error);
       });
-        // setCart(response.data);
+        setCart(response.data);
       }
       const addItem = async () => {
         const response = await axios.post('http://localhost:3000/api/cart', { items: [newItem] });
@@ -24,7 +24,7 @@ const Cart = () => {
         setNewItem({ productId: '', name: '', quantity: 1, price: 0 });
       };
       const updateItem = async (id, updatedItem) => {
-        const response = await axios.put(`lhttp://localhost:3000/api/cart/${id}`, { items: [updatedItem] });
+        const response = await axios.put(`http://localhost:3000/api/cart/:${id}`, { items: [updatedItem] });
         setCart(cart.map(item => (item._id === id ? response.data : item)));
       };
       const deleteItem = async (id) => {

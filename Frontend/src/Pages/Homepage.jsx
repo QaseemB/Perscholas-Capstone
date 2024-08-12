@@ -5,10 +5,16 @@ import axios from 'axios';
 export const HomePage = () => {
   const [instruments, setInstruments] = useState([]);
   const [studio, setStudio]= useState([])
+  const [user, setUser] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId')
+    console.log(token)
+    console.log(userId)
     if (token) {
       setIsAuthenticated(true); // User is authenticated
     }
@@ -21,8 +27,16 @@ export const HomePage = () => {
         const response = await axios.get('http://localhost:3000/api/studio'); // Fetch items from API
         setStudio(response.data);
       };
+    const fetchUsername = async (id) => {
+        const res = await axios.get(`http://localhost:3000/api/users/${userId}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        setUser(res.data)
+      }
     fetchInstruments();
-    fetchStudio()
+    fetchStudio();
+    fetchUsername();
+    
   }, []);
 
   return (
@@ -32,7 +46,7 @@ export const HomePage = () => {
         <a href="/">Home</a>
         <a href="/products">Products</a>
         <a href="/cart">Cart</a>
-        {!isAuthenticated ? <a href="/login">Login</a> : <span>Welcome Back!</span>}
+        {!isAuthenticated ? <a href="/login">Login</a> : <span>Welcome Back {user ? user.name : 'User'}</span>}
       </nav>
       <h2>Shopping Items</h2>
       <ul>

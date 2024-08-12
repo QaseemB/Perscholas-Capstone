@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -9,7 +10,7 @@ const Register = () => {
         password: '',
         email: ''
     });
-    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const { username, password ,email, name} = formData;
 
@@ -24,7 +25,8 @@ const Register = () => {
                 email,
                 name
             });
-            setMessage('Registered successfully'); // Set success message
+            console.log(formData)
+            navigate('/home')// Set success message
         } catch (err) {
             console.error(err.response.data);
             alert('Failed to register, Username or email already exists'); // Set error message
@@ -41,7 +43,6 @@ const Register = () => {
                 <input type="text" placeholder="email@aol.com" name="email" value={email} onChange={onChange} required />
                 <button type="submit">Register</button>
             </form>
-            <p className="message">{message}</p>
         </div>
     );
 };

@@ -11,7 +11,7 @@ export const resolveIndexByUserID = async (req,res,next)=>{
     } = req;
    
     if(!mongoose.Types.ObjectId.isValid(id)) 
-      return res.sendstatus(400);
+      return res.status(400);
     try {const findUser = await USERS.findById(id);
       if (!findUser) return next(error(404, 'User not found'));
     req.findUser = findUser;

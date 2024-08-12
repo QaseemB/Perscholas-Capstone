@@ -27,6 +27,7 @@ const Login = ({ setLoggedInUser }) => {
                 password
             });
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('userId', res.data.userId)
             setLoggedInUser(username);
             navigate('/home')
             

@@ -69,7 +69,10 @@ export const login = async (req,res)=>{
         jwt.sign(payload, process.env.jwtSecret, { expiresIn: 3600 }, 
             (err, token) => {
                 if (err) throw err;
-                res.json({ token });
+                res.json({ token,
+                    userId: user._id
+                } );
+                console.log(user._id)
             });
         } catch (err) {
             console.error(err.message);

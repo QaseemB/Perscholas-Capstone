@@ -8,6 +8,7 @@ export const PageOneRendering = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token'); // Remove token from localStorage
+        localStorage.removeItem('userId');
         setLoggedInUser(null); // Set logged-in user to null
     };
 
