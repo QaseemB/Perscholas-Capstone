@@ -35,7 +35,6 @@ router
   .get((req,res)=>{
     const eqipment = studioeq.find((s)=> s.id == req.params.id);
     if(eqipment) res.json(eqipment);
-     else(next);
   })
   .patch(resolveIndexbyEqID, (req,res)=>{
     const {body,findEqIndex} = req;

@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 export const HomePage = () => {
   const [instruments, setInstruments] = useState([]);
-  const [studio, setStudio]= useState([])
-  const [user, setUser] = useState([])
+  const [studio, setStudio] = useState([]);
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   
 
   useEffect(() => {
@@ -38,40 +39,57 @@ export const HomePage = () => {
         }); // Fetch items from API
         setStudio(response.data);
       };
-    // const fetchUsername = async (id) => {
-    //     const res = await axios.get(`http://localhost:3000/api/users/${userId}`, {
-    //         // headers: { Authorization: `Bearer ${token}` }
-    //     })
-    //     setUser(res.data)
-    //   }
-     
-    fetchInstruments();
-    fetchStudio();
-    checkAuth();
-    // fetchUsername();
-    
-  }, []);
+      const fetchData = async () => {
+        await Promise.all([fetchInstruments(), fetchStudio(), checkAuth()]);
+        setLoading(false); // Set loading to false after all data is fetched
+      };
+  
+      fetchData();
+    }, []);
+    if (loading) {
+      return <div>Loading...</div>; // Render loading state
+    }
+  
 
   return (
-    <div>
-        <span>Welcome Back {user ? user.name : 'User'}</span>
- 
-      <h2>Shopping Items</h2>
-      <ul>
-      {instruments.slice(0, 2).map(i => (
-  <li key={i._id}>
-    {i.model} - ${i.price}
-    <button>Add to Cart</button>
-  </li>
-))}
-        {studio.slice(0, 2).map(s => (
-  <li key={s._id}>
-    {s.model} - ${s.price}
-    <button>Add to Cart</button>
-  </li>
-))}
-      </ul>
+    <>
+    <h2 className='WelcomeBack bg-red-500'>Welcome Back {user ? user.name : 'User'}</h2>
+    <h3 className="bg-red-500">Shopping Items</h3>
+   <div className='homeDiv'>
+  <div className="product-display">
+    <img src="public/instruments/akaimpcx.jpg" alt="Akai MPC X" />
+    <div className="product-info">
+      {instruments[0].model} - ${instruments[0].price}
+      <button className='addToCart'>Add to Cart</button>
     </div>
+  </div>
+
+  <div className="product-display">
+    <img src="public/instruments/dx7.jpg" alt="DX7" />
+    <div className="product-info">
+      {instruments[1].model} - ${instruments[1].price}
+      <button className='addToCart'>Add to Cart</button>
+    </div>
+  </div>
+
+  <div className="product-display">
+    <img src="public/studioequipment/neve1073preamp.jpg" alt="Neve 1073 Preamp" />
+    <div className="product-info">
+      {studio[0].model} - ${studio[0].price}
+      <button className='addToCart'>Add to Cart</button>
+    </div>
+  </div>
+
+  <div className="product-display">
+    <img src="public/studioequipment/avalonvt_737sp.jpg" alt="Avalon VT-737SP" />
+    <div className="product-info">
+      {studio[1].model} - ${studio[1].price}
+      <button className='addToCart'>Add to Cart</button>
+    </div>
+  </div>
+</div>
+    </>
+    
   );
 };
 

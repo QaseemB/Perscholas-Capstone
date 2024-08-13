@@ -59,8 +59,6 @@ export const login = async (req,res)=>{
                 id: user._id
             }
         };
-
-
 // Sign the JWT (JSON Web Token) with the provided payload using the secret key from the environment variables.
 // The token is set to expire in 3600 seconds (1 hour).
 // If an error occurs during the signing process, throw an error.
@@ -71,8 +69,8 @@ export const login = async (req,res)=>{
                 if (err) throw err;
                 res.cookie('token', token, {
                     httpOnly: true,
-                    secure: false,
-                    samesite: 'strict',
+                    secure: true,
+                    sameSite: 'None',
                     maxAge: 3600000})
                 .json( {userId: user._id})
                 console.log(user._id,token)
@@ -81,6 +79,14 @@ export const login = async (req,res)=>{
             console.error(err.message);
             res.status(500).send('Server Error');
         }
+    };
+
+
+
+export const logout =  (req, res) => {
+        res.clearCookie('token');
+        res.json({ msg: 'Logged out successfully' });
+
     };
 
 

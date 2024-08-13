@@ -9,7 +9,7 @@ import { instrumentTest } from "../data/instrument.mjs";
 export const resolveIndexbyInstID = async (req,res,next)=>{
     const {params: {id} } = req;
       if(!mongoose.Types.ObjectId.isValid(id)) 
-        return res.sendstatus(400);
+        return res.status(400);
       try {const findInstrument = await Instruments.findById(id);
         if (!findInstrument) return next(error(404, 'User not found'));
       req.findInstrument = findInstrument;

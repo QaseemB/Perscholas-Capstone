@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,4 +13,54 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.homeDiv{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  display: flex;
+  padding: 20px;
 
+}
+
+.WelcomeBack{
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+
+.product-display{
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: lightgray;
+  text-align: center;
+}
+
+.product-display img {
+  width: 80%;
+  height: 30%;
+  border-radius: 8px;
+}
+.product-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  color: black;
+  text-align: center;
+}
+
+.addToCart{
+  margin-top: 10px;
+  width: 100%; 
+  color : white;
+  border: 3px black solid
+}
+/* h2{
+  color: black
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

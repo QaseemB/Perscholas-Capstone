@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { register, login,checkAuth} from '../controllers/AuthController.mjs';
+import { register, login,checkAuth,logout} from '../controllers/AuthController.mjs';
 import { authMiddleware } from '../utilties/authMiddleware.mjs';
 
 router
@@ -14,5 +14,9 @@ router
 router
     .route("/check")
     .get(authMiddleware,checkAuth)
+
+router 
+    .route("/logout")
+    .post(logout)
 
 export {router}
