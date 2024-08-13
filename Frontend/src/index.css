@@ -29,12 +29,12 @@ h3{
   text-align: center;
 }
 
-.product-display{
+/* .product-display{
   border: 1px solid #ddd;
   padding: 20px;
-  background-color: lightgray;
+  background-color: #59B7E3;
   text-align: center;
-}
+} */
 
 .product-display img {
   width: 80%;

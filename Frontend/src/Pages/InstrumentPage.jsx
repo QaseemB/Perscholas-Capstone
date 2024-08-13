@@ -28,6 +28,7 @@ export const InstrumentPage = () => {
                 const response = await axios.get('http://localhost:3000/api/instrument', {
                     withCredentials: true
                 });
+                console.log('Fetched instrument:', response.data); 
                 setInstruments(response.data);
             } catch (error) {
                 console.error("Error fetching studio data:", error);
@@ -48,7 +49,7 @@ export const InstrumentPage = () => {
         <h3 className="text-black text-center bg-red-500">Shopping Items</h3>
         <div className='grid grid-cols-5 gap-4 m-6'>
                 {instrument.map((i) => (
-                    <div className="product-display" key={i.id}>
+                    <div className="product-display product-display bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg shadow-lg w-64" key={i._id}>
                         <img src={imageMap[i.model]} alt={i.model} />
                         <div className="product-info">
                             {i.model} - ${i.price}

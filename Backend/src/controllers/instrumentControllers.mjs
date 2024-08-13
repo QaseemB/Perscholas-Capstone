@@ -44,17 +44,22 @@ export const resolveIndexbyInstID = async (req,res,next)=>{
     console.log(`${data.model}: the data clg`)
       await newInstrument.save();
       console.log('New user has been saved succefully');
-    } catch (error){
+    } catch (err){
       console.log(`error saving new user`, error);
       return res.status(500).send({error:'error saving new user'});
     }
   }
 
- export const getInstrument = async (req,res) =>{
-  const instrumentsData = await Instruments.find();
-  console.error(error, `Issue getting instruments`)
-    res.json(instrumentsData);
- }
+  export const getInstrument = async (req, res) => {
+    try {
+      const instrumentsData = await Instruments.find();
+      res.json(instrumentsData);
+    } catch (err) {
+      console.error(`Issue getting instruments:`, err); 
+      res.status(500).send({ error: 'Error fetching instruments' });
+    }
+  };
+  
 
  export const getInstrumentById = (req,res) =>{
   res.json(req.findInstrument)

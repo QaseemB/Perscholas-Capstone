@@ -28,6 +28,7 @@ export const StudioPage = () => {
                 const response = await axios.get('http://localhost:3000/api/studio', {
                     withCredentials: true
                 });
+                console.log('Fetched studio:', response.data); 
                 setStudio(response.data);
             } catch (error) {
                 console.error("Error fetching studio data:", error);
@@ -50,7 +51,7 @@ export const StudioPage = () => {
         <h3 className="text-black text-center bg-red-500">Shopping Items</h3>
         <div className='grid grid-cols-5 gap-4 m-6'>
                 {studio.map((s) => (
-                    <div className="product-display" key={s.id}>
+                    <div className="product-display bg-gradient-to-r from-gray-300 to-gray-100 p-2 rounded-lg shadow-lg w-64" key={s.id}>
                         <img src={imageMap[s.model]} alt={s.model} />
                         <div className="product-info">
                             {s.model} - ${s.price}
