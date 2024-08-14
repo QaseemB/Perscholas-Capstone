@@ -56,3 +56,6 @@ Your project folder should be named as follows, for submission:
 - **Adhere to Agile principles and the Scrum framework.** Perform stand-up sessions (with an instructor) when possible. 1%
 - **Successfully track your project using a software similar to Jira.** 1%
 - **Build your application primarily with TypeScript.** 3%
+
+
+thanks manara
