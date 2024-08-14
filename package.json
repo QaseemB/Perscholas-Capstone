@@ -8,7 +8,7 @@
     "Bend": "NODE_ENV=production nodemon Backend/src/server.mjs",
     "start": "concurrently \"npm run Bend\" \"npm run Fend\"",
     "cleanData": "node Backend/scripts/cleanData.mjs",
-    "build": "npm install && npm install --prefix Fend && npm run build --prefix Fend"
+    "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
   },
   "author": "",
   "license": "ISC",
