@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "Fend": "npm run dev --prefix Frontend",
-    "Bend": "nodemon Backend/src/server.mjs",
+    "Bend": "NODE_ENV=production nodemon Backend/src/server.mjs",
     "start": "concurrently \"npm run Bend\" \"npm run Fend\"",
     "cleanData": "node Backend/scripts/cleanData.mjs",
     "build": "npm install && npm install --prefix Fend && npm run build --prefix Fend"
