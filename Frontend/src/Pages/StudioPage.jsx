@@ -30,8 +30,8 @@ export const StudioPage = () => {
                 });
                 console.log('Fetched studio:', response.data); 
                 setStudio(response.data);
-            } catch (error) {
-                console.error("Error fetching studio data:", error);
+            } catch (err) {
+                console.error("Error fetching studio data:", err);
             } finally {
                 setLoading(false);
             }
@@ -51,11 +51,11 @@ export const StudioPage = () => {
         <h3 className="text-black text-center bg-red-500">Shopping Items</h3>
         <div className='grid grid-cols-5 gap-4 m-6'>
                 {studio.map((s) => (
-                    <div className="product-display bg-gradient-to-r from-gray-300 to-gray-100 p-2 rounded-lg shadow-lg w-64" key={s.id}>
+                    <div className="product-display bg-gradient-to-r from-gray-300 to-gray-100 p-2 rounded-lg shadow-lg w-64" key={s._id}>
                         <img src={imageMap[s.model]} alt={s.model} />
                         <div className="product-info">
                             {s.model} - ${s.price}
-                            <button className='border-4 border-gray-600 bg-gray-300'>Add to Cart</button>
+                            <button className='border-4 border-gray-600 bg-gray-300 p-2 '>Add to Cart</button>
                         </div>
                     </div>
                 ))}

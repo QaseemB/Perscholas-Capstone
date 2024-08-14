@@ -6,30 +6,19 @@ import {Login} from '../Components/Login'
 export const PageOneRendering = () => {
     const [loggedInUser, setLoggedInUser] = useState(null);
 
-    const handleLogout = () => {
-        localStorage.removeItem('token'); // Remove token from localStorage
-        localStorage.removeItem('userId');
-        setLoggedInUser(null); // Set logged-in user to null
-    };
-
     // Determine what to render based on loggedInUser
-    let content;
-
-    if (loggedInUser) {
-        content = (
-            <div>
-                <p>Welcome {loggedInUser}</p>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-        );
-    } else {
-        content = (
-            <div>
+    let content = (
+      
+            <div className="flex items-center justify-center h-screen bg-gray-400">
+                <div className="bg-white p-6 rounded-lg shadow-lg text-center">
                 <Register />
                 <Login setLoggedInUser={setLoggedInUser} />
+                </div>
+                
             </div>
+        
         );
-    }
+
 
     return (
         <div className="App">

@@ -19,19 +19,9 @@ const cleanData = async ()=> {
             throw new Error(`ATLAS_URI is missing in env file`)
         }
         await Studio.deleteMany({})
-            .then(()=>{
             console.log('studio equipment has been cleared')
-            })
-            .catch((error)=>{
-                console.log('error deleting the studio equipment')
-            })
         await USERS.deleteMany({})
-            .then(()=>{
               console.log("users has been cleared")
-            })
-            .catch((error)=>{
-              console.error('error deleting the users',error)
-            })
         await Instruments.deleteMany({})
             .then(()=>{
               console.log("Instruments has been cleared")

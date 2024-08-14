@@ -1,4 +1,3 @@
-import { validationResult, matchedData,body} from "express-validator";
 import dotenv from 'dotenv'
 dotenv.config();
 import {error} from '../utilties/error.mjs'
@@ -24,7 +23,7 @@ export const register = async (req,res) =>{
         await user.save();
 
         const payload = {
-            user: {id: user.id}
+            user: {id: user._id}
         };
         jwt.sign(payload, process.env.jwtSecret, {expiresIn: 3600},
             (err,token)=>{
@@ -84,10 +83,20 @@ export const login = async (req,res)=>{
 
 
 export const logout =  (req, res) => {
-        res.clearCookie('token');
-        res.json({ msg: 'Logged out successfully' });
-
-    };
+      try {
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            path: '/'
+        });
+        console.log('Token cleared from cookies.');
+        res.json({ msg: 'Logged out successfully' }).status(200);
+    } catch (err) {
+        console.error('Error during logout:', err);
+        res.status(500).send('Server Error');
+    }
+};
 
 
     export const checkAuth = async (req, res) => {

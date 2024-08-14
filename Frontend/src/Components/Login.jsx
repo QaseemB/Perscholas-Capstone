@@ -40,7 +40,7 @@ const Login = ({ setLoggedInUser }) => {
 
     return (
         <div className="auth-form">
-            <h2>Login</h2>
+            <h2 className="text-center text-black">Login</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" 
                        placeholder="Username" 
@@ -54,7 +54,7 @@ const Login = ({ setLoggedInUser }) => {
                        value={password} 
                        onChange={onChange} 
                        required />
-                <button type="submit">Login</button>
+                <button className='border-4 border-gray-600 bg-gray-300 w-64 text-black 'type="submit">Login</button>
             </form>
             <p className="message">{message}</p>
         </div>
