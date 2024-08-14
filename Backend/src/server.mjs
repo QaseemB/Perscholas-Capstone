@@ -86,13 +86,13 @@ const logTime = (req,res,next)=>{
 }
 
 
-app.get("/", async(req, res) => {
-  myEmitter.on('event', () => {
-    console.log('Event triggered');
-  });
-  let userdb = await USERS.find({})
-    res.send(userdb);
-  });
+// app.get("/", async(req, res) => {
+//   myEmitter.on('event', () => {
+//     console.log('Event triggered');
+//   });
+//   let userdb = await USERS.find({})
+//     res.send(userdb);
+//   });
 
 app.use("/api/users",logTime,authMiddleware, userRouter,(req, res) => {
   res.json({ msg: 'This is a protected route' });
