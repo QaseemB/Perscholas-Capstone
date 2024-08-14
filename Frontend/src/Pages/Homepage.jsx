@@ -60,7 +60,7 @@ export const HomePage = () => {
     <img src="public/instruments/akaimpcx.jpg" alt="Akai MPC X" />
     <div className="product-info">
       {instruments[0].model} - ${instruments[0].price}
-      <button className='addToCart'>Add to Cart</button>
+      <button className='addToCart text-black'>Add to Cart</button>
     </div>
   </div>
 
@@ -68,7 +68,7 @@ export const HomePage = () => {
     <img src="public/instruments/dx7.jpg" alt="DX7" />
     <div className="product-info">
       {instruments[1].model} - ${instruments[1].price}
-      <button className='addToCart'>Add to Cart</button>
+      <button className='addToCart text-black'>Add to Cart</button>
     </div>
   </div>
 
@@ -76,7 +76,7 @@ export const HomePage = () => {
     <img src="public/studioequipment/neve1073preamp.jpg" alt="Neve 1073 Preamp" />
     <div className="product-info">
       {studio[0].model} - ${studio[0].price}
-      <button className='addToCart'>Add to Cart</button>
+      <button className='addToCart text-black'>Add to Cart</button>
     </div>
   </div>
 
@@ -84,7 +84,7 @@ export const HomePage = () => {
     <img src="public/studioequipment/avalonvt_737sp.jpg" alt="Avalon VT-737SP" />
     <div className="product-info">
       {studio[1].model} - ${studio[1].price}
-      <button className='addToCart'>Add to Cart</button>
+      <button className='addToCart text-black'>Add to Cart</button>
     </div>
   </div>
 </div>

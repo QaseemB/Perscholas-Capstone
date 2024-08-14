@@ -36,13 +36,13 @@ const Register = () => {
 
     return (
         <div className="auth-form">
-            <h2>Register</h2>
+            <h2 className="text-center text-black">Register</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" placeholder="First and last name" name="name" value={name} onChange={onChange} required />
                 <input type="text" placeholder="Username" name="username" value={username} onChange={onChange} required />
                 <input type="text" placeholder="Password" name="password" value={password} onChange={onChange} required />
                 <input type="text" placeholder="email@aol.com" name="email" value={email} onChange={onChange} required />
-                <button type="submit">Register</button>
+                <button className="border-4 border-gray-600 bg-gray-300 w-64 text-black" type="submit">Register</button>
             </form>
         </div>
     );

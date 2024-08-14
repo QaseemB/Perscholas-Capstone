@@ -7,7 +7,7 @@
     "Fend": "npm run dev --prefix Frontend",
     "Bend": "nodemon Backend/src/server.mjs",
     "start": "concurrently \"npm run Bend\" \"npm run Fend\"",
-    "cleanData": "node Backend/scripts/cleanData.mjs"
+    "cleanData": "node Backend/scripts/cleanData"
   },
   "author": "",
   "license": "ISC",
