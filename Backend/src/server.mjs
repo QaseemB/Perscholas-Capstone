@@ -85,9 +85,7 @@ app.get("/instruments", (req, res) => {
 
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../Frontend/dist', 'index.html'));
-});
+
 
 
 const logTime = (req,res,next)=>{
@@ -112,6 +110,11 @@ app.use("/api/instrument",logTime, instrumentRouter);
 app.use("/api/studio",logTime, studioeqRouter);
 app.use("/api/cart",logTime,cartRouter)
 app.use("/api/auth",logTime,authRouter)
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../Frontend/dist', 'index.html'));
+});
 
 
 const PORT = process.env.PORT || 3000;

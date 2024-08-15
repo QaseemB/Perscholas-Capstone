@@ -4,7 +4,7 @@ import { resolveIndexStudioID,getStudio,updateStudio,deleteStudio,validateStudio
 import { validateInstrument } from '../controllers/instrumentControllers.mjs';
 
 router
-  .route("")
+  .route("/")
   .get(getStudio)
   .post(validateInstrument,createStudio)
 
