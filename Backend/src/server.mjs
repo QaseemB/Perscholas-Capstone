@@ -11,6 +11,7 @@ import {router as studioeqRouter} from './routes/studioeqRoutes.mjs'
 import { router as cartRouter} from './routes/Cart.mjs';
 import {router as authRouter} from './routes/authRoutes.mjs'
 import { authMiddleware } from './utilties/authMiddleware.mjs';
+import path from "path";
 import { fileURLToPath } from 'url';
 import  {USERS}  from "./models/users.mjs";
 
