@@ -7,7 +7,7 @@ import  axios  from "axios";
     const navigate = useNavigate()
      const handleLogout = async () => {
         try {
-            await axios.post('http://localhost:3000/api/auth/logout', {}, { withCredentials: true });
+            await axios.post('https://perscholas-capstone.onrender.com/api/auth/logout', {}, { withCredentials: true });
             localStorage.removeItem('token');
             localStorage.removeItem('userId');
             setLoggedInUser(null);

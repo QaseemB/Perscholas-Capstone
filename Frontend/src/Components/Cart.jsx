@@ -10,7 +10,7 @@ const Cart = () => {
 
       const fetchCart = async () => {
         try {
-          const response = await axios.get('http://localhost:3000/api/cart');
+          const response = await axios.get('https://perscholas-capstone.onrender.com/api/cart');
           console.log(response.data);
           setCart(response.data);
         } catch (error) {
@@ -22,12 +22,12 @@ const Cart = () => {
       const addItem = async () => {
         try {
           let Product;
-          const studioResponse = await axios.get(`http://localhost:3000/api/studio/${newItem._id}`);
+          const studioResponse = await axios.get(`https://perscholas-capstone.onrender.com/api/studio/${newItem._id}`);
           
           if (studioResponse.data && Object.keys(studioResponse.data).length !== 0) {
             Product = studioResponse.data;
           } else {
-            const instrumentResponse = await axios.get(`http://localhost:3000/api/instrument/${newItem._id}`);
+            const instrumentResponse = await axios.get(`https://perscholas-capstone.onrender.com/api/instrument/${newItem._id}`);
             
             if (instrumentResponse.data && Object.keys(instrumentResponse.data).length !== 0) {
               Product = instrumentResponse.data;
@@ -37,7 +37,7 @@ const Cart = () => {
             }
           }
       
-          const cartResponse = await axios.post('http://localhost:3000/api/cart', { 
+          const cartResponse = await axios.post('https://perscholas-capstone.onrender.com/api/cart', { 
             items: [{
               _id: Product._id,
               model: Product.model,

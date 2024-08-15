@@ -25,7 +25,7 @@ export const StudioPage = () => {
     useEffect(() => {
         const fetchStudio = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/studio', {
+                const response = await axios.get('https://perscholas-capstone.onrender.com/api/studio', {
                     withCredentials: true
                 });
                 console.log('Fetched studio:', response.data); 

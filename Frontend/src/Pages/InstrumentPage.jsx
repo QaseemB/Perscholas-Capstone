@@ -25,7 +25,7 @@ export const InstrumentPage = () => {
     useEffect(() => {
         const fetchInstrument = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/instrument', {
+                const response = await axios.get('https://perscholas-capstone.onrender.com/api/instrument', {
                     withCredentials: true
                 });
                 console.log('Fetched instrument:', response.data); 

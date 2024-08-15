@@ -16,7 +16,7 @@ export const HomePage = () => {
     const checkAuth = async () => {
       try {
         // Make a request to a protected route on your server
-        const res = await axios.get('http://localhost:3000/api/auth/check', {
+        const res = await axios.get('https://perscholas-capstone.onrender.com/api/auth/check', {
           withCredentials: true 
         });
         setIsAuthenticated(true);
@@ -28,13 +28,13 @@ export const HomePage = () => {
       }
     };
     const fetchInstruments = async () => {
-      const response = await axios.get('http://localhost:3000/api/instrument',{
+      const response = await axios.get('https://perscholas-capstone.onrender.com/api/instrument',{
         withCredentials: true
       }); // Fetch items from API
       setInstruments(response.data);
     };
     const fetchStudio = async () => {
-        const response = await axios.get('http://localhost:3000/api/studio',{
+        const response = await axios.get('https://perscholas-capstone.onrender.com/api/studio',{
           withCredentials: true
         }); // Fetch items from API
         setStudio(response.data);
