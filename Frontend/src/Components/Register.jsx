@@ -19,7 +19,7 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://perscholas-capstone.onrender.com/api/register', {
+            const res = await axios.post('https://perscholas-capstone.onrender.com/api/auth/register', {
                 withCredentials: true,
                 username,
                 password,
