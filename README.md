@@ -1,61 +1,129 @@
-# Requirements
+# Audiophile E-Commerce Platform
 
-Your project folder should be named as follows, for submission:
+## Project Overview
 
-**LastName_FirstName_ProjectName_Capstone**
+The **Audiophile E-Commerce Platform** is a full-stack application designed to serve as an online store for audio engineering products. The platform aims to provide a seamless shopping experience for audio professionals and enthusiasts, offering a range of products including musical instruments and studio equipment.
 
-## (20%) Project Structure, Standardization, and Convention
+## Intended Goals
 
-- **Project is organized into appropriate files and directories, following best practices.** 2%
-- **Project contains an appropriate level of comments.** Project is pushed to GitHub and contains a README file that documents the project, including an overall description of the project. 5%
-- **Standard naming conventions are used throughout the project.** 2%
-- **Ensure that the program runs without errors.** Comment out things that do not work and explain your blockers—you can still receive partial credit. 4%
-- **Level of effort displayed in creativity, presentation, and user experience.** 5%
+The primary goals of this project are:
 
-## (12%) Core JavaScript
+- **User Authentication:** Allow users to register, log in, and manage their accounts securely.
+- **Product Management:** Enable users to browse and search for various audio engineering products, including instruments and studio equipment.
+- **Shopping Cart Functionality:** Implement a shopping cart system where users can add products, view their cart, and proceed to checkout.
+- **Responsive Design:** Create a user-friendly interface that works well on both desktop and mobile devices.
+- **Admin Features:** Provide functionality for administrators to manage products and users efficiently.
 
-- **Demonstrate proper usage of ES6 syntax and tools.** 2%
-- **Use functions and classes to adhere to the DRY principle.** 2%
-- **Use Promises and async/await, where appropriate.** 2%
-- **Use Axios or fetch to retrieve data from an API.** 2%
-- **Use sound programming logic throughout the application.** 2%
-- **Use appropriate exception handling.** 2%
+## Tech Stack
 
-## (9%) Database
+The application is built using the following technologies:
 
-- **Use MongoDB to create a database for your application.** 5%
-- **Apply appropriate indexes to your database collections.** 2%
-- **Apply appropriate indexes to your database collections.** 2%
+- **Frontend:**
+  - React
+  - Axios
+  - Tailwind CSS
 
-## (19%) Server
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB
+  - Mongoose
 
-- **Create a RESTful API using Node and Express.** For the purposes of this project, you may forgo the HATEOAS aspect of REST APIs. 7%
-- **Include API routes for all four CRUD operations.** 5%
-- **Utilize the native MongoDB driver or Mongoose to interface with your database.** 5%
-- **Include at least one form of user authentication/authorization within the application.** 2%
-
-## (35%) Front-End Development
-
-- **Use React to create the application’s front-end.** 10%
-- **Use CSS to style the application.** 5%
-- **Create at least four different views or pages for the application.** 5%
-- **Create some form of navigation that is included across the application’s pages, utilizing React Router for page rendering.** 5%
-- **Use React Hooks or Redux for application state management.** 5%
-- **Interface directly with the server and API that you created.** 5%
-
-## (5%) Presentation
-
-- **Create a short overview of your application.** 1%
-- **Highlight the use cases of your application.** 1%
-- **Highlight the technical functionality of the application, from a high-level perspective.** 1%
-- **Discuss what you have learned through the development of the application.** 1%
-- **Discuss additional features that could be added to the application in the future.** 1%
-
-## (5%) Extra Credit
-
-- **Adhere to Agile principles and the Scrum framework.** Perform stand-up sessions (with an instructor) when possible. 1%
-- **Successfully track your project using a software similar to Jira.** 1%
-- **Build your application primarily with TypeScript.** 3%
+- **Others:**
+  - Express Validator for input validation
+  - Vite for development server and build tools
 
 
-thanks manara
+  ## Acknowledgements
+
+    Credit to Nadir for the cleanData script, which was instrumental in seeding the database with initial product data
+
+## Project Structure
+
+Barnhardt_Qaseem_Audiophile_Capstone
+├── Backend
+├── Frontend
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+├── src
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+
+## Known Issues
+
+- The shopping cart logic is not functioning as intended. Further debugging is required to ensure that users can successfully add, view, and manage items in their shopping carts.
+
+
+## Features
+
+- User registration and login with JWT authentication.
+- Product categories for instruments and studio equipment.
+- CRUD operations for managing users, products, and shopping cart items.
+- Responsive design with Tailwind CSS for an appealing user interface.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/Barnhardt_Qaseem_Audiophile_Capstone.git
+
+
+2. Navigate to the project directory:
+
+
+
+ cd Barnhardt_Qaseem_Audiophile_Capstone
+
+3. Install backend dependencies:
+
+
+
+cd Backend
+npm install
+
+4. Install frontend dependencies:
+
+
+
+cd ../Frontend
+npm install
+
+5. Set up your environment variables for the backend (e.g., MongoDB connection string).
+
+6. Start the backend server:
+
+
+
+cd Backend
+npm run start
+
+7. Start the frontend development server:
+
+
+
+    cd ../Frontend
+    npm run dev
+
+Usage
+
+    Visit http://localhost:3000 in your web browser to access the application.
+    Users can register, log in, browse products, and add items to their shopping cart.
+
+Contributing
+
+Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request.
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+vbnet
+
+Feel free to modify any sections to better fit your project's specifics or your preferences!
+
