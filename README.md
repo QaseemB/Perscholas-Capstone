@@ -121,9 +121,6 @@ Contributing
 Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request.
 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-vbnet
 
 Feel free to modify any sections to better fit your project's specifics or your preferences!
 
