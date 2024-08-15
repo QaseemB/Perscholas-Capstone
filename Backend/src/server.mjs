@@ -54,7 +54,8 @@ mongoose.connection.once('open', ()=> {
   });
 
 
-app.use(express.static("./public"));
+app.use(express.static(path.join(__dirname, '../../Frontend/dist')));
+
 console.log('Static files served from:', 'styles');
 app.set("views", "Backend/src/views"); 
 app.set("view engine", "pug");
