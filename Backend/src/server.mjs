@@ -14,6 +14,10 @@ import { authMiddleware } from './utilties/authMiddleware.mjs';
 import  {USERS}  from "./models/users.mjs";
 
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 // import path from "path"
 // import { fileURLToPath } from 'url';
 console.log('Node Environment:', process.env.NODE_ENV);
@@ -76,6 +80,10 @@ app.get('/studio', (req, res) => {
 app.get("/instruments", (req, res) => {
   res.render("instruments");
 
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../Frontend/dist', 'index.html'));
 });
 
 
