@@ -4,6 +4,12 @@
 
 The **Audiophile E-Commerce Platform** is a full-stack application designed to serve as an online store for audio engineering products. The platform aims to provide a seamless shopping experience for audio professionals and enthusiasts, offering a range of products including musical instruments and studio equipment.
 
+
+
+## youtube presentation
+
+https://youtu.be/MOXJQeZu0Xo
+
 ## Intended Goals
 
 The primary goals of this project are:
